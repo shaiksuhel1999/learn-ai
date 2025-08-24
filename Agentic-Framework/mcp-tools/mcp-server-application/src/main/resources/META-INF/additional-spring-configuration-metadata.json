@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "spring.ai.mcp.server.se-message-endpoint",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.ai.mcp.server.se-message-endpoint'"
+  },
+  {
+    "name": "spring.ai.mcp.server.session.required",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.ai.mcp.server.session.required'"
+  }
+]}

@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: mcp-server-application
+  ai:
+    mcp:
+     server:
+       name: greeting-server
+       version: 1.0.0

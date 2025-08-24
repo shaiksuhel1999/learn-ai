@@ -1,0 +1,15 @@
+server:
+    port: 8082
+
+spring:
+  application:
+    name: mcp-client-application
+  ai:
+    mcp:
+      client:
+        toolcallback:
+          enabled: true
+        sse:
+          connections:
+            mongo-mcp-server:
+              url: http://localhost:8081
