@@ -1,0 +1,47 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: crypto-mcp-toolkit-server-two
+  profiles:
+    active:
+    - sse
+
+  ai:
+    mcp:
+      server:
+        name: crypto-market-mcp-server-two
+        version: 1.1.2
+        enabled: true
+
+        # Transport
+        protocol: sse
+
+        # SSE endpoints
+        sse-endpoint: /sse
+        sse-message-endpoint: /mcp/message
+
+        # Tool discovery
+        annotation-scanner:
+          enabled: true
+
+        # Execution model
+        type: async
+
+        # Timeouts
+        request-timeout: 600000
+
+        # Capabilities
+        capabilities:
+          tool: true
+          prompt: false
+          resource: false
+          completion: false
+
+        # Optional description
+        instructions: "This MCP server provides crypto market tools"
+
+        # Metadata notifications
+        tool-change-notification: true
+        resource-change-notification: true
+        prompt-change-notification: true

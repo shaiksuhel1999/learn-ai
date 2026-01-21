@@ -1,0 +1,22 @@
+{
+	"mcpServers": {
+		"crypto-mcp-toolkit-server": {
+			"command": "java",
+			"args": [
+				"-Dspring.ai.mcp.server.stdio=true",
+				"-Dserver.port=9998",
+				"-jar",
+				"D:\\crypto-mcp-toolkit-server-1.0.jar"
+			]
+		},
+		"crypto-mcp-toolkit-server-two": {
+			"command": "java",
+			"args": [
+				"-Dspring.ai.mcp.server.stdio=true",
+				"-Dserver.port=9999",
+				"-jar",
+				"D:\\crypto-mcp-toolkit-server-teo-1.0.jar"
+			]
+		}
+	}
+}

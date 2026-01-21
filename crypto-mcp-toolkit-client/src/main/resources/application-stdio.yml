@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: crypto-mcp-toolkit-client
+
+#  profiles:
+#    active: stdio
+
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3.2:latest
+    mcp:
+      client:
+        enabled: true
+        initialized: true
+        annotation-scanner:
+          enabled: true
+        root-change-notification: true
+        toolcallback:
+          enabled: true
+        name: crypto-mcp-toolkit-client
+        version: 1.1.2
+        request-timeout: 30s
+        type: async
+        stdio:
+          servers-configuration: classpath:/mcp-servers-config.json
+
+logging:
+  level:
+    '[org.springframework.ai]': DEBUG
