@@ -3,9 +3,6 @@ server:
 spring:
   application:
     name: crypto-mcp-toolkit-server-two
-  profiles:
-    active:
-    - sse
 
   ai:
     mcp:

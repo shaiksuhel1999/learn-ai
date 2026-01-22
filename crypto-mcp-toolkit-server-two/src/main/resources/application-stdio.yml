@@ -9,9 +9,6 @@ spring:
     banner-mode: off
   application:
     name: crypto-mcp-toolkit-server-two
-  profiles:
-    active:
-    - stdio
 
   ai:
     mcp:
