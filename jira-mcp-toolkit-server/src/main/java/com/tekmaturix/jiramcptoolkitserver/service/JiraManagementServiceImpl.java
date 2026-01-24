@@ -51,7 +51,7 @@ public class JiraManagementServiceImpl {
     @Tool(name = "createIssue", description = "Create a new Jira issue in a project")
     public String createIssue(
             @ToolParam(description = "Jira project key (e.g. 'PROJ')", required=true) String projectKey,
-            @ToolParam(description = "Jira issue type ID Should be Numeric value (Subtask--10006;Story--10008;Task--10007;Epic--10005)", required=true) String issueTypeId,
+            @ToolParam(description = "Jira issue type ID Should be Numeric value (e.g. 10007 for 'Task', 10008 for 'Story', 10006 for 'Subtask', 10005 for 'Epic')", required=true) Long issueTypeId,
             @ToolParam(description = "Short summary or title of the issue", required=true) String issueSummary,
             @ToolParam(description = "Detailed issue description", required=true) String issueDescription,
             @ToolParam(description = "Display name of the assignee", required=true) String assigneeName,
@@ -59,7 +59,7 @@ public class JiraManagementServiceImpl {
     ) throws Exception {
 
         IssueRestClient issueRestClient = restClient.getIssueClient();
-        IssueInputBuilder builder = new IssueInputBuilder(projectKey, Long.parseLong(issueTypeId));
+        IssueInputBuilder builder = new IssueInputBuilder(projectKey, issueTypeId);
         builder.setSummary(issueSummary);
         builder.setDescription(issueDescription);
         builder.setDueDate(new DateTime().plusDays(noOfDays));
