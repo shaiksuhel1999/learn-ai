@@ -51,7 +51,7 @@ public class JiraManagementServiceImpl {
     @Tool(name = "createIssue", description = "Create a new Jira issue in a project")
     public String createIssue(
             @ToolParam(description = "Jira project key (e.g. 'PROJ')", required=true) String projectKey,
-            @ToolParam(description = "Jira issue type ID (e.g. 10001 for 'Task')", required=true) Long issueTypeId,
+            @ToolParam(description = "Jira issue type ID Should be Numeric value (Subtask--10006;Story--10008;Task--10007;Epic--10005)", required=true) String issueTypeId,
             @ToolParam(description = "Short summary or title of the issue", required=true) String issueSummary,
             @ToolParam(description = "Detailed issue description", required=true) String issueDescription,
             @ToolParam(description = "Display name of the assignee", required=true) String assigneeName,
@@ -59,12 +59,19 @@ public class JiraManagementServiceImpl {
     ) throws Exception {
 
         IssueRestClient issueRestClient = restClient.getIssueClient();
-        IssueInputBuilder builder = new IssueInputBuilder(projectKey, issueTypeId);
+        IssueInputBuilder builder = new IssueInputBuilder(projectKey, Long.parseLong(issueTypeId));
         builder.setSummary(issueSummary);
         builder.setDescription(issueDescription);
         builder.setDueDate(new DateTime().plusDays(noOfDays));
 
         BasicUser assigneeUser = createUser(assigneeName);
+        
+        log.info("Project Key: {}",projectKey);
+        log.info("IssueId: {}", issueTypeId);
+        log.info("IssueSummary: {}", issueSummary);
+        log.info("IssueDescription: {}", issueDescription);
+        log.info("No of Days: {}", noOfDays);
+        
         if (assigneeUser != null) {
             String accountId = assigneeUser.getName();
             builder.setFieldInput(new FieldInput("assignee", ComplexIssueInputFieldValue.with("id", accountId)));
